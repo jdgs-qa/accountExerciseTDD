@@ -55,6 +55,12 @@ public class AccountMapRepository implements AccountRepository {
 
 	public Integer getFirstNames(String name) {
 		Integer counter = 0;
+		for (int i = 0; i < accountMap.size(); i++) {
+			Account a = accountMap.get(i);
+			if (a.getFirstName().equals(name)) {
+				counter++;
+			}
+		}
 		return counter;
 	}
 
