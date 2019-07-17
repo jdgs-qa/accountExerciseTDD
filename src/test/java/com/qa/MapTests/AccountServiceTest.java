@@ -13,10 +13,10 @@ import com.qa.persistence.repository.AccountRepository;
 public class AccountServiceTest {
 
 	private AccountMapRepository amr;
-	private final String ACCOUNT_JSON_1 = "{'ID':1,'ACCOUNTNUMBER':'ADC123','FIRSTNAME':'ADAM','LASTNAME':'SMITH'}";
-	private final String ACCOUNT_JSON_2 = "{'ID':2,'ACCOUNTNUMBER':'ADC124','FIRSTNAME':'JOSEPH','LASTNAME':'ADAMSON'}";
-	private final String ACCOUNT_JSON_3 = "{'ID':3,'ACCOUNTNUMBER':'ADC125','FIRSTNAME':'JOSEPH','LASTNAME':'JOSEPHSON'}";
-	private final String ACCOUNT_JSON_4 = "{'ID':4,'ACCOUNTNUMBER':'ADC126','FIRSTNAME':'ANDREW','LASTNAME':'ADAMSON'}";
+	private final String ACCOUNT_JSON_1 = "{'id':1,'accountNumber':'ADC123','firstName':'ADAM','lastName':'SMITH'}";
+	private final String ACCOUNT_JSON_2 = "{'id':2,'accountNumber':'ADC124','firstName':'JOSEPH','lastName':'ADAMSON'}";
+	private final String ACCOUNT_JSON_3 = "{'id':3,'accountNumber':'ADC125','firstName':'JOSEPH','lastName':'JOSEPHSON'}";
+	private final String ACCOUNT_JSON_4 = "{'id':4,'accountNumber':'ADC126','firstName':'ANDREW','lastName':'ADAMSON'}";
 
 	private final Account ACCOUNT_1 = new Account(1, "ADC123", "SCOOT", "PACINO");
 
@@ -60,19 +60,19 @@ public class AccountServiceTest {
 	@Test
 	public void getCountForFirstNamesInAccountWhenZeroOccurances() {
 		Integer i = 0;
-		assertEquals(i, this.amr.getFirstNames("NATHAN"));
+		assertEquals(i, this.amr.countFirstNames("NATHAN"));
 	}
 
 	@Test
 	public void getCountForFirstNamesInAccountWhenOne() {
 		Integer i = 1;
-		assertEquals(i, this.amr.getFirstNames("ANDREW"));
+		assertEquals(i, this.amr.countFirstNames("ANDREW"));
 	}
 
 	@Test
 	public void getCountForFirstNamesInAccountWhenTwo() {
 		Integer i = 2;
-		assertEquals(i, this.amr.getFirstNames("JOSEPH"));
+		assertEquals(i, this.amr.countFirstNames("JOSEPH"));
 	}
 
 }
