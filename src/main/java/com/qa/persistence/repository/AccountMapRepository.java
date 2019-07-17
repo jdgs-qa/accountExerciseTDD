@@ -38,7 +38,18 @@ public class AccountMapRepository implements AccountRepository, Status {
 	}
 
 	public String deleteAccount(int accountNumber) {
-		// TODO Auto-generated method stub
+//		accountMap.r
+//		for (Account a : accountMap.values()) {
+//			if (a.getAccountNumber().equals(accountNumber)) {
+//				Ac
+//				
+//			}
+//		}
+//		if (this.accountMap.containsValue(toDel)) {
+//			return FAILURE;
+//		} else {
+//			return SUCCESS;
+//		}
 		return null;
 	}
 
