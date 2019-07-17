@@ -53,17 +53,17 @@ public class AccountServiceTest {
 
 	@Test
 	public void getCountForFirstNamesInAccountWhenZeroOccurances() {
-		assertEquals(0, getFirstNames("NATHAN"));
+		assertEquals(0, amr.getFirstNames("NATHAN"));
 	}
 
 	@Test
 	public void getCountForFirstNamesInAccountWhenOne() {
-		assertEquals(1, getFirstNames("ANDREW"));
+		assertEquals(1, amr.getFirstNames("ANDREW"));
 	}
 
 	@Test
 	public void getCountForFirstNamesInAccountWhenTwo() {
-		assertEquals(2, getFirstNames("JOSEPH"));
+		assertEquals(2, amr.getFirstNames("JOSEPH"));
 	}
 
 }
