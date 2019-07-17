@@ -53,4 +53,9 @@ public class AccountMapRepository implements AccountRepository {
 		}
 	}
 
+	public Integer getFirstNames(String name) {
+		Integer counter = 0;
+		return counter;
+	}
+
 }
