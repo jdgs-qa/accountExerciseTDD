@@ -1,7 +1,6 @@
 package com.qa;
 
 import com.qa.persistence.repository.AccountMapRepository;
-import com.qa.util.JSONUtil;
 
 public class App {
 
@@ -12,13 +11,11 @@ public class App {
 	private static AccountMapRepository amr;
 
 	public static void main(String[] args) {
-		JSONUtil json = new JSONUtil();
 		amr = new AccountMapRepository();
 		amr.createAccount(ACCOUNT_JSON_1);
 		amr.createAccount(ACCOUNT_JSON_2);
 		amr.createAccount(ACCOUNT_JSON_3);
 		amr.createAccount(ACCOUNT_JSON_4);
-		System.out.println(json.getJSONForObject(amr.getAccountMap()));
 	}
 
 }

@@ -8,21 +8,24 @@ import org.junit.Test;
 
 import com.qa.persistence.domain.Account;
 import com.qa.persistence.repository.AccountMapRepository;
-import com.qa.persistence.repository.AccountRepository;
+import com.qa.persistence.repository.Status;
+import com.qa.util.JSONUtil;
 
 public class AccountServiceTest {
 
 	private AccountMapRepository amr;
-	private final String ACCOUNT_JSON_1 = "{'id':1,'accountNumber':'ADC123','firstName':'ADAM','lastName':'SMITH'}";
-	private final String ACCOUNT_JSON_2 = "{'id':2,'accountNumber':'ADC124','firstName':'JOSEPH','lastName':'ADAMSON'}";
-	private final String ACCOUNT_JSON_3 = "{'id':3,'accountNumber':'ADC125','firstName':'JOSEPH','lastName':'JOSEPHSON'}";
-	private final String ACCOUNT_JSON_4 = "{'id':4,'accountNumber':'ADC126','firstName':'ANDREW','lastName':'ADAMSON'}";
+	private JSONUtil j;
+	private final String ACCOUNT_JSON_1 = "{\"id\":1,\"accountNumber\":\"ADC123\",\"firstName\":\"JOSEPH\",\"lastName\":\"SMITH\"}";
+	private final String ACCOUNT_JSON_2 = "{\"id\":2,\"accountNumber\":\"ADC124\",\"firstName\":\"ADAM\",\"lastName\":\"ADAMSON\"}";
+	private final String ACCOUNT_JSON_3 = "{\"id\":3,\"accountNumber\":\"ADC125\",\"firstName\":\"JOSEPH\",\"lastName\":\"JOSEPHSON\"}";
+	private final String ACCOUNT_JSON_4 = "{\"id\":4,\"accountNumber\":\"ADC126\",\"firstName\":\"ANDREW\",\"lastName\":\"ADAMSON\"}";
 
-	private final Account ACCOUNT_1 = new Account(1, "ADC123", "SCOOT", "PACINO");
+	private final Account ACCOUNT_1 = new Account(1, "ADC123", "JOSEPH", "SMITH");
 
 	@Before
 	public void setup() {
 		this.amr = new AccountMapRepository();
+		this.j = new JSONUtil();
 		this.amr.createAccount(this.ACCOUNT_JSON_1);
 		this.amr.createAccount(this.ACCOUNT_JSON_2);
 		this.amr.createAccount(this.ACCOUNT_JSON_3);
@@ -31,14 +34,13 @@ public class AccountServiceTest {
 
 	@Test
 	public void addAccountTest() {
-		assertEquals("Failed to add account", AccountRepository.SUCCESS, this.amr.createAccount(this.ACCOUNT_JSON_1));
+		assertEquals("Failed to add account", Status.SUCCESS, this.amr.createAccount(this.ACCOUNT_JSON_1));
 	}
 
 	@Test
 	public void updateAccountTest() {
 		this.amr.createAccount(this.ACCOUNT_JSON_1);
-		assertEquals("Failed to update account", AccountRepository.FAILURE,
-				this.amr.updateAccount(1, this.ACCOUNT_JSON_2));
+		assertEquals("Failed to update account", Status.FAILURE, this.amr.updateAccount(1, this.ACCOUNT_JSON_2));
 	}
 
 	@Test
@@ -48,13 +50,12 @@ public class AccountServiceTest {
 
 	@Test
 	public void jsonStringToAccountConversionTest() {
-//		assertEquals("Failed to convert JSON to Account", )
+		assertEquals(this.ACCOUNT_1, j.getObjectForJSON(this.ACCOUNT_JSON_1, Account.class));
 	}
 
 	@Test
 	public void accountConversionToJSONTest() {
-		// testing JSONUtil
-		fail("TODO");
+		assertEquals(this.ACCOUNT_JSON_1, j.getJSONForObject(this.ACCOUNT_1));
 	}
 
 	@Test

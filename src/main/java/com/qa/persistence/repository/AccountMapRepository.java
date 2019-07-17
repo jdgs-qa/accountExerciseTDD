@@ -6,7 +6,7 @@ import java.util.Map;
 import com.qa.persistence.domain.Account;
 import com.qa.util.JSONUtil;
 
-public class AccountMapRepository implements AccountRepository {
+public class AccountMapRepository implements AccountRepository, Status {
 
 	private Map<Integer, Account> accountMap = new HashMap<Integer, Account>();
 
@@ -24,8 +24,7 @@ public class AccountMapRepository implements AccountRepository {
 	// You can use the suggested tests or build your own.
 
 	public String getAllAccounts() {
-		// TODO Auto-generated method stub
-		return null;
+		return json.getJSONForObject(accountMap);
 	}
 
 	public String createAccount(String account) {
