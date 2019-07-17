@@ -13,14 +13,20 @@ import com.qa.persistence.repository.AccountRepository;
 public class AccountServiceTest {
 
 	private AccountMapRepository amr;
-	private final String ACCOUNT_JSON_1 = "{'ID':1,'ACCOUNTNUMBER':'ADC123','FIRSTNAME':'SCOOT','LASTNAME':'PACINO'}";
-	private final String ACCOUNT_JSON_2 = "{'ID':1,'ACCOUNTNUMBER':'ADC123','FIRSTNAME':'CHAD','LASTNAME':'THUNDER'}";
+	private final String ACCOUNT_JSON_1 = "{'ID':1,'ACCOUNTNUMBER':'ADC123','FIRSTNAME':'ADAM','LASTNAME':'SMITH'}";
+	private final String ACCOUNT_JSON_2 = "{'ID':2,'ACCOUNTNUMBER':'ADC124','FIRSTNAME':'JOSEPH','LASTNAME':'ADAMSON'}";
+	private final String ACCOUNT_JSON_3 = "{'ID':3,'ACCOUNTNUMBER':'ADC125','FIRSTNAME':'JOSEPH','LASTNAME':'JOSEPHSON'}";
+	private final String ACCOUNT_JSON_4 = "{'ID':4,'ACCOUNTNUMBER':'ADC126','FIRSTNAME':'ANDREW','LASTNAME':'ADAMSON'}";
 
 	private final Account ACCOUNT_1 = new Account(1, "ADC123", "SCOOT", "PACINO");
 
 	@Before
 	public void setup() {
 		this.amr = new AccountMapRepository();
+		this.amr.createAccount(this.ACCOUNT_JSON_1);
+		this.amr.createAccount(this.ACCOUNT_JSON_2);
+		this.amr.createAccount(this.ACCOUNT_JSON_3);
+		this.amr.createAccount(this.ACCOUNT_JSON_4);
 	}
 
 	@Test
