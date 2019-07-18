@@ -6,7 +6,7 @@ import java.util.Map;
 import com.qa.persistence.domain.Account;
 import com.qa.util.JSONUtil;
 
-public class AccountMapRepository implements AccountRepository {
+public class AccountMapRepository implements AccountRepository, Status {
 
 	private Map<Integer, Account> accountMap = new HashMap<Integer, Account>();
 
@@ -24,8 +24,7 @@ public class AccountMapRepository implements AccountRepository {
 	// You can use the suggested tests or build your own.
 
 	public String getAllAccounts() {
-		// TODO Auto-generated method stub
-		return null;
+		return json.getJSONForObject(accountMap);
 	}
 
 	public String createAccount(String account) {
@@ -39,7 +38,18 @@ public class AccountMapRepository implements AccountRepository {
 	}
 
 	public String deleteAccount(int accountNumber) {
-		// TODO Auto-generated method stub
+//		accountMap.r
+//		for (Account a : accountMap.values()) {
+//			if (a.getAccountNumber().equals(accountNumber)) {
+//				Ac
+//				
+//			}
+//		}
+//		if (this.accountMap.containsValue(toDel)) {
+//			return FAILURE;
+//		} else {
+//			return SUCCESS;
+//		}
 		return null;
 	}
 
@@ -51,6 +61,20 @@ public class AccountMapRepository implements AccountRepository {
 		} else {
 			return "Failed to add account";
 		}
+	}
+
+	public Integer countFirstNames(String name) {
+		Integer counter = 0;
+		for (Account a : accountMap.values()) {
+			if (a.getFirstName().equals(name)) {
+				counter++;
+			}
+		}
+		return counter;
+	}
+
+	public Map<Integer, Account> getAccountMap() {
+		return accountMap;
 	}
 
 }
